@@ -59,7 +59,7 @@ def entry_update_view(request, pk):
             entry.text = form.cleaned_data['text']
             entry.status = form.cleaned_data['status']
             entry.save()
-            return redirect('index', pk= entry.pk)
+            return redirect('index')
         else:
             return render(request, 'entry_update.html', context={
                 'Entry': entry,
