@@ -58,6 +58,7 @@ def entry_update_view(request, pk):
             entry.mail = form.cleaned_data['mail']
             entry.text = form.cleaned_data['text']
             entry.status = form.cleaned_data['status']
+            entry.updated_at = form.cleaned_data['updated_at']
             entry.save()
             return redirect('index')
         else:
