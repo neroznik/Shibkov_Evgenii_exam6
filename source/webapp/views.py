@@ -44,8 +44,7 @@ def entry_update_view(request, pk):
             'text': entry.text,
             'author': entry.author,
             'status': entry.status,
-            'updated_at': make_naive(entry.publish_at)\
-                .strftime(BROWSER_DATETIME_FORMAT)
+            'updated_at': make_naive(entry.publish_at).strftime(BROWSER_DATETIME_FORMAT)
              })
         return render(request, 'entry_update.html', context={
             'form': form,
