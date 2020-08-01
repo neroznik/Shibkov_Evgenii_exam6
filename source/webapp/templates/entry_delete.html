@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Do you like to delete entry from: "{{Entry.author}}"?</h1>
+    <h1>Do you like to delete entry from: "<b>{{Entry.author}}</b>"?</h1>
     <br>
       <form action="{%url "entry_delete" Entry.pk%}" method="post">
         {% csrf_token %}
@@ -17,5 +17,5 @@
     </form>
     <br>
     <h4 > Entry text: </h4>
-    <h6>{{ Entry.text }}</h6>
+    <h6><i>{{ Entry.text }}</i></h6>
 {% endblock %}
