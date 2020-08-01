@@ -8,7 +8,7 @@ STATUS_CHOICES = [
 
 class Entry(models.Model):
     author = models.CharField(max_length=40, null=False, blank=False, default='Unknown', verbose_name='Автор')
-    mail = models.EmailField (max_length=254, null=False, blank= False,verbose_name='email')
+    mail = models.EmailField(max_length=254, verbose_name='Email')
     text = models.TextField(max_length=3000, null=False, blank=False, verbose_name='Текст')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Время создания')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Время редактирования')

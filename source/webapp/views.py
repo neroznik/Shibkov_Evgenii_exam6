@@ -26,10 +26,10 @@ def entry_create_view(request):
         if form.is_valid():
             entry = Entry.objects.create(
                 author=form.cleaned_data['author'],
+                mail=form.cleaned_data['mail'],
                 text=form.cleaned_data['text'],
-                status=form.cleaned_data['status'],
-            )
-            return redirect('index', pk=Entry.pk)
+                status=form.cleaned_data['status'])
+            return redirect('index')
         else:
             return render(request, 'entry_create.html', context={
                 'form': form
@@ -44,7 +44,7 @@ def entry_update_view(request, pk):
             'text': entry.text,
             'author': entry.author,
             'status': entry.status,
-            'updated_at': make_naive(entry.publish_at).strftime(BROWSER_DATETIME_FORMAT)
+            'updated_at': make_naive(entry.updated_at).strftime(BROWSER_DATETIME_FORMAT)
              })
         return render(request, 'entry_update.html', context={
             'form': form,
@@ -55,7 +55,7 @@ def entry_update_view(request, pk):
         if form.is_valid():
             entry.author = form.cleaned_data['author']
             entry.text = form.cleaned_data['text']
-            entry.publish_at = form.cleaned_data['publish_at']
+            entry.updated_at = form.cleaned_data['updated_at']
             entry.status = form.cleaned_data['status']
             entry.save()
             return redirect('index', pk=entry.pk)
