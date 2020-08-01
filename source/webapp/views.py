@@ -42,6 +42,7 @@ def entry_update_view(request, pk):
     if request.method == "GET":
         form = EntryForm(initial={
             'text': entry.text,
+            'mail': entry.mail,
             'author': entry.author,
             'status': entry.status,
             'updated_at': make_naive(entry.updated_at).strftime(BROWSER_DATETIME_FORMAT)
@@ -54,6 +55,7 @@ def entry_update_view(request, pk):
         form = EntryForm(data=request.POST)
         if form.is_valid():
             entry.author = form.cleaned_data['author']
+            entry.mail = form.changed_data['mail']
             entry.text = form.cleaned_data['text']
             entry.updated_at = form.cleaned_data['updated_at']
             entry.status = form.cleaned_data['status']

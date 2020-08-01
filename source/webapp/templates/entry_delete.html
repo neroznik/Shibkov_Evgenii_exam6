@@ -7,12 +7,15 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Do you like to delete "{{ent.author}}"?</h1>
-      <form action="{%url "entry_delete" ent.pk%}" method="post">
+    <h1>Do you like to delete entry from: "{{Entry.author}}"?</h1>
+    <br>
+      <form action="{%url "entry_delete" Entry.pk%}" method="post">
         {% csrf_token %}
-          <button type="submit" class="btn btn-danger" value="Yes">Yes</button>
-          <button type="button" class="btn btn-primary" href="{% url 'index' ent.pk %}">Cancel</button>
+           <input type="submit" class="btn btn-danger" value="Yes">
+          <a type="button" class="btn btn-primary" href="{% url 'index' %}">Cancel</a>
+      <br>
     </form>
-    <h3> Entry text </h3>
-    <p>{{ Entry.text }}</p>
+    <br>
+    <h4 > Entry text: </h4>
+    <h6>{{ Entry.text }}</h6>
 {% endblock %}
